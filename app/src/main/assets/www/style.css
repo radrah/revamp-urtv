@@ -1,0 +1,236 @@
+@font-face{font-family:Manrope;src:url(manrope.woff2) format("woff2");font-weight:200 800}
+:root{--nv:#0a1340;--cy:#62c1dc;--glass:rgba(8,16,56,.55)}
+html{font-size:calc(100vw/96)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#000;color:#fff;font-family:Manrope,system-ui,sans-serif;width:100vw;height:100vh;overflow:hidden}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;outline:none}
+#bg,#bg .layer,#bg .tint{position:fixed;inset:0}
+#bg .layer{background-size:cover;background-position:center;opacity:0;transition:opacity 2.4s ease}
+#bg .layer.on{opacity:1}
+#bg .tint{background:linear-gradient(105deg,rgba(4,10,44,.66) 0%,rgba(14,34,92,.34) 48%,rgba(70,120,190,.10) 100%)}
+
+header{position:fixed;top:2.6rem;left:3.6rem;right:3.6rem;display:flex;justify-content:space-between;align-items:center;z-index:2}
+.who{display:flex;align-items:center;gap:1.1rem}
+.badge{width:3rem;height:3rem;border-radius:50%;border:.1rem solid var(--cy);background:var(--glass);display:grid;place-items:center;color:#fff}
+.badge svg{width:1.5rem;height:1.5rem}
+.clock{font-size:4.2rem;font-weight:800;letter-spacing:.2rem;line-height:1}
+.date{font-size:1.5rem;font-weight:600;letter-spacing:.2rem;text-transform:uppercase;opacity:.8;margin-top:.6rem}
+nav{display:flex;gap:1rem}
+.pill{display:flex;align-items:center;gap:.6rem;padding:.55rem 1.3rem;border:.1rem solid rgba(255,255,255,.8);border-radius:99rem;text-transform:uppercase;letter-spacing:.15rem;font-size:1rem;font-weight:700}
+.pill img{width:1.1rem;height:1.1rem}
+.pill:focus,.pill.focus{background:#fff;color:var(--nv);border-color:#fff}
+.pill:focus img,.pill.focus img{filter:invert(1) brightness(.2)}
+.badge:focus,.badge.focus{background:#fff;color:var(--nv)}
+
+main{position:fixed;left:1.8rem;right:1.8rem;bottom:.8rem;z-index:1}
+.dock{position:relative;padding:1.1rem 1.5rem 1.2rem;border:.1rem solid rgba(98,193,220,.45);border-radius:1.5rem;background:var(--glass);backdrop-filter:blur(.8rem)}
+h2{font-size:.85rem;font-weight:700;letter-spacing:.3rem;text-transform:uppercase;color:var(--cy);margin:0 0 .6rem .3rem}
+.row{display:flex;gap:.8rem;margin-bottom:.9rem}
+.row:last-child{margin-bottom:0}
+.tile{flex:1 1 0;min-width:0;height:7.2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;border-radius:1.2rem;border:.1rem solid transparent;transition:transform .12s}
+.tile img{height:4.3rem;width:84%;object-fit:contain;object-position:center}
+.tile .label{font-size:.95rem;font-weight:700;letter-spacing:.12rem;text-transform:uppercase;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:92%}
+.tile .sub{font-size:.7rem;letter-spacing:.1rem;opacity:.7;margin-top:-.35rem;text-transform:uppercase}
+.tile.missing{opacity:.45}
+.tile:focus,.tile.focus{border-color:var(--cy);border-radius:1.3rem;background:rgba(98,193,220,.12);transform:scale(1.04)}
+.tile svg{height:4.3rem;width:4.3rem;fill:none;stroke:#fff;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+
+#overlay{position:fixed;inset:0;z-index:5;background:rgba(3,8,34,.82);backdrop-filter:blur(1rem);display:flex;justify-content:center;align-items:center}
+#overlay[hidden]{display:none}
+.sheet{width:84rem;max-height:80vh;overflow-y:auto;padding:2rem}
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem}
+.app{display:flex;flex-direction:column;align-items:center;gap:.6rem;padding:.9rem;border-radius:1rem;border:.1rem solid transparent}
+.app img{width:100%;aspect-ratio:16/9;object-fit:contain;background:rgba(255,255,255,.06);border-radius:.6rem}
+.app span{font-size:.85rem;font-weight:700;letter-spacing:.08rem;text-align:center;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.app:focus,.app.focus{border-color:var(--cy);background:rgba(98,193,220,.14)}
+#toast{position:fixed;left:50%;top:7rem;transform:translateX(-50%);z-index:9;padding:.9rem 1.6rem;border-radius:99rem;background:#fff;color:var(--nv);font-weight:700;font-size:1.05rem;max-width:70rem;text-align:center}
+#toast[hidden]{display:none}
+
+
+.tile img.wide{width:88%;transform:scale(.8)}
+
+/* ---- Bagel Fat One font (SIL OFL) used throughout ---- */
+@font-face{font-family:"Bagel Fat One";src:url(bagelfatone.woff2) format("woff2");font-weight:400}
+body,button{font-family:"Bagel Fat One",Manrope,system-ui,sans-serif}
+*{font-weight:400!important}
+.clock{letter-spacing:.08rem;line-height:1.05}
+.date{font-size:1.6rem;letter-spacing:.1rem;opacity:.9;line-height:1.1}
+.pill{font-size:1.15rem;letter-spacing:.1rem;line-height:1;padding:.6rem 1.4rem}
+h2{font-size:1rem;letter-spacing:.2rem;line-height:1}
+.tile .label{font-size:1.1rem;letter-spacing:.08rem;line-height:1.1}
+.tile .sub{font-size:.8rem;letter-spacing:.08rem;line-height:1}
+.app span{font-size:.95rem;letter-spacing:.05rem;line-height:1.1}
+#toast{font-size:1.1rem;letter-spacing:.04rem}
+
+/* bigger clock and date */
+.clock{font-size:6rem;letter-spacing:.1rem}
+.date{font-size:2.3rem;margin-top:.5rem}
+
+/* ---- weather beside the clock ---- */
+.who{gap:2rem}
+.wx{display:flex;align-items:center;gap:.9rem;padding-left:2rem;border-left:.12rem solid rgba(255,255,255,.35)}
+.wx[hidden]{display:none}
+.wxi{font-size:3.4rem;line-height:1}
+.wxt{display:block;font-size:3rem;line-height:1}
+.wxd{display:block;font-size:1.1rem;letter-spacing:.08rem;opacity:.85;margin-top:.2rem}
+
+/* ---- native app icons (custom dock additions) ---- */
+.tile img.native{height:4.3rem;width:4.3rem;max-width:none;border-radius:1rem;object-fit:cover}
+
+/* ---- hold-OK menu ---- */
+#menu{position:fixed;inset:0;z-index:8;background:rgba(3,8,34,.6);display:flex;align-items:center;justify-content:center}
+#menu[hidden]{display:none}
+#menu .box{min-width:24rem;padding:1.6rem;border:.1rem solid rgba(98,193,220,.6);border-radius:1.5rem;background:rgba(8,16,56,.92)}
+#menuTitle{font-size:1.6rem;margin-bottom:1rem;color:var(--cy);text-align:center}
+.mbtn{display:block;width:100%;padding:.8rem 1.2rem;margin-top:.5rem;font-size:1.3rem;text-align:left;border-radius:.9rem;border:.1rem solid transparent}
+.mbtn:focus,.mbtn.focus{background:#fff;color:var(--nv)}
+
+/* ---- idle screensaver ---- */
+#saver{position:fixed;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 1.4s ease;text-shadow:0 .2rem 1.5rem rgba(0,0,0,.45)}
+#saverClock{font-size:15rem;line-height:1}
+#saverDate{font-size:3.2rem;opacity:.95;margin-top:1rem}
+#saverWx{font-size:3rem;opacity:.95;margin-top:1.6rem}
+header,main{transition:opacity 1s ease}
+body.saver #saver{opacity:1}
+body.saver header,body.saver main{opacity:0;pointer-events:none}
+body.saver #bg .tint{opacity:.3}
+#bg .tint{transition:opacity 1.4s ease}
+
+/* ---- quick panel (right side sheet) ---- */
+#panel{position:fixed;inset:0;z-index:7;background:rgba(3,8,34,.35)}
+#panel[hidden]{display:none}
+.sheetp{position:absolute;top:0;right:0;bottom:0;width:30rem;padding:2.2rem 1.8rem;background:linear-gradient(180deg,rgba(8,16,56,.94),rgba(10,28,80,.94));border-left:.1rem solid rgba(98,193,220,.5);transform:translateX(100%);transition:transform .25s ease;overflow-y:auto}
+body.panel .sheetp{transform:translateX(0)}
+.ph{margin-bottom:1.6rem}
+#pClock{font-size:2.6rem;line-height:1}
+#pDate{font-size:1.1rem;letter-spacing:.1rem;opacity:.8;margin-top:.4rem;text-transform:uppercase}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.ptile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;height:7.4rem;border-radius:1.1rem;border:.1rem solid rgba(255,255,255,.25);background:rgba(255,255,255,.05)}
+.ptile svg{width:2.6rem;height:2.6rem;fill:none;stroke:#fff;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.ptile span{font-size:1.05rem;letter-spacing:.06rem}
+.ptile:focus,.ptile.focus{background:#fff;color:var(--nv);border-color:#fff}
+.ptile:focus svg,.ptile.focus svg{stroke:var(--nv)}
+body.saver #panel{display:none}
+
+/* ---- Art pill (navy) + notification badge ---- */
+.pill.art{background:var(--nv);border-color:var(--cy);color:#fff}
+.pill.art img{filter:none}
+.pill.art:focus,.pill.art.focus{background:#fff;color:var(--nv);border-color:#fff}
+.pill.art:focus img,.pill.art.focus img{filter:invert(1) brightness(.2)}
+.nbadge{display:inline-block;min-width:1.5rem;height:1.5rem;line-height:1.5rem;margin-left:.2rem;padding:0 .4rem;border-radius:99rem;background:var(--cy);color:var(--nv);font-size:.95rem;text-align:center}
+.nbadge[hidden]{display:none}
+
+/* ---- notifications in the panel ---- */
+.ntitle{margin:1.6rem 0 .7rem .2rem;font-size:1rem;letter-spacing:.2rem;text-transform:uppercase;color:var(--cy)}
+#nList{display:flex;flex-direction:column;gap:.6rem}
+.nitem{text-align:left;padding:.8rem 1rem;border-radius:1rem;border:.1rem solid rgba(255,255,255,.2);background:rgba(255,255,255,.05)}
+.nitem .na{font-size:.8rem;letter-spacing:.06rem;opacity:.75;text-transform:uppercase}
+.nitem .nt{font-size:1.1rem;margin-top:.2rem}
+.nitem .nx{font-size:.9rem;opacity:.85;margin-top:.15rem}
+.nitem:focus,.nitem.focus{background:#fff;color:var(--nv);border-color:#fff}
+.nempty{padding:.8rem .4rem;font-size:1rem;opacity:.75}
+
+/* weather right beside the time, date underneath */
+.who{flex-direction:column;align-items:flex-start;gap:0}
+.tw{display:flex;align-items:center;gap:1.6rem}
+.wx{padding-left:1.6rem}
+
+/* slightly smaller time and date */
+.clock{font-size:5rem}
+.date{font-size:1.9rem;margin-top:.4rem}
+.wxt{font-size:2.6rem}
+.wxi{font-size:3rem}
+
+/* apps area: more see-through so the wallpaper shows */
+.dock{background:rgba(8,16,56,.28);backdrop-filter:blur(.3rem)}
+
+/* liquid-glass dock */
+.dock{
+  background:
+    linear-gradient(155deg,rgba(255,255,255,.20) 0%,rgba(255,255,255,.06) 38%,rgba(255,255,255,.02) 62%,rgba(255,255,255,.10) 100%),
+    rgba(120,170,230,.10);
+  -webkit-backdrop-filter:blur(1.6rem) saturate(1.8) brightness(1.08);
+  backdrop-filter:blur(1.6rem) saturate(1.8) brightness(1.08);
+  border:.08rem solid rgba(255,255,255,.34);
+  border-top-color:rgba(255,255,255,.62);
+  border-left-color:rgba(255,255,255,.48);
+  border-radius:2rem;
+  box-shadow:
+    inset 0 .1rem .1rem rgba(255,255,255,.55),
+    inset 0 -.1rem .3rem rgba(255,255,255,.12),
+    inset 0 0 2.4rem rgba(255,255,255,.07),
+    0 1.4rem 3.2rem rgba(0,0,12,.35);
+}
+.dock::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,0) 22%)}
+.dock h2{text-shadow:0 .1rem .5rem rgba(0,0,20,.45)}
+.tile .label,.tile .sub{text-shadow:0 .1rem .4rem rgba(0,0,20,.5)}
+
+/* Liquid Glass (clear): nearly transparent, light blur, bright refractive rim */
+.dock{
+  background:linear-gradient(135deg,rgba(255,255,255,.07) 0%,rgba(255,255,255,0) 40%,rgba(255,255,255,.04) 100%);
+  -webkit-backdrop-filter:blur(.35rem) saturate(1.5) brightness(1.06);
+  backdrop-filter:blur(.35rem) saturate(1.5) brightness(1.06);
+  border:none;
+  border-radius:2.4rem;
+  box-shadow:
+    inset .12rem .12rem .15rem -.05rem rgba(255,255,255,.85),
+    inset -.12rem -.12rem .15rem -.05rem rgba(255,255,255,.5),
+    inset 0 0 .9rem rgba(255,255,255,.10),
+    0 1rem 2.6rem rgba(0,0,15,.22);
+}
+.dock::before{
+  background:
+    radial-gradient(120% 60% at 12% 0%,rgba(255,255,255,.22),rgba(255,255,255,0) 55%),
+    radial-gradient(90% 50% at 92% 100%,rgba(255,255,255,.12),rgba(255,255,255,0) 60%);
+}
+
+/* even clearer glass */
+.dock{
+  background:linear-gradient(135deg,rgba(255,255,255,.03) 0%,rgba(255,255,255,0) 40%,rgba(255,255,255,.02) 100%);
+  -webkit-backdrop-filter:blur(.2rem) saturate(1.4);
+  backdrop-filter:blur(.2rem) saturate(1.4);
+}
+.dock::before{opacity:.6}
+
+/* ---- side panel: clear liquid glass (matches the apps box) ---- */
+.sheetp{
+  background:linear-gradient(135deg,rgba(255,255,255,.07) 0%,rgba(255,255,255,.01) 45%,rgba(255,255,255,.05) 100%);
+  -webkit-backdrop-filter:blur(.6rem) saturate(1.5) brightness(1.04);
+  backdrop-filter:blur(.6rem) saturate(1.5) brightness(1.04);
+  border:none;
+  box-shadow:inset .12rem 0 .15rem -.05rem rgba(255,255,255,.7),inset 0 .12rem .15rem -.05rem rgba(255,255,255,.5),-1rem 0 2.6rem rgba(0,0,15,.25);
+  border-radius:2.4rem 0 0 2.4rem;
+}
+#panel{background:rgba(3,8,34,.12)}
+.sheetp .ph,.sheetp .ntitle,.nitem,.ptile span{text-shadow:0 .1rem .4rem rgba(0,0,20,.5)}
+.ptile,.nitem{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.28)}
+
+/* ---- notifications: clear-all + add-app tile + rename ---- */
+.nclear{align-self:flex-end;padding:.4rem 1.1rem;border-radius:99rem;border:.1rem solid rgba(255,255,255,.5);background:rgba(255,255,255,.08);font-size:.95rem;letter-spacing:.08rem;text-transform:uppercase}
+.nclear:focus,.nclear.focus{background:#fff;color:var(--nv);border-color:#fff}
+.addtile svg{width:3rem;height:3rem;fill:none;stroke:#fff;stroke-width:1.6;stroke-linecap:round}
+.addtile{border-style:dashed}
+#rename{position:fixed;inset:0;z-index:20;background:rgba(3,8,34,.6);display:flex;align-items:center;justify-content:center}
+#rename .rbox{width:34rem;padding:2rem;border-radius:1.6rem;background:rgba(10,24,70,.92);border:.1rem solid rgba(98,193,220,.6)}
+#rename .rt{font-size:1.6rem;margin-bottom:1rem}
+#rename input{width:100%;padding:.8rem 1rem;font-size:1.5rem;font-family:inherit;color:#fff;background:rgba(255,255,255,.1);border:.1rem solid var(--cy);border-radius:.8rem;outline:none}
+#rename .rh{margin-top:.8rem;font-size:.9rem;opacity:.7}
+
+/* side panel: more tint + blur so it stays readable over anything */
+.sheetp{
+  background:linear-gradient(135deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.02) 45%,rgba(255,255,255,.06) 100%),rgba(8,16,56,.48);
+  -webkit-backdrop-filter:blur(1.2rem) saturate(1.5);
+  backdrop-filter:blur(1.2rem) saturate(1.5);
+}
+
+/* smaller screensaver time */
+#saverClock{font-size:10.5rem}
+#saverDate{font-size:2.5rem;margin-top:.8rem}
+#saverWx{font-size:2.3rem;margin-top:1.2rem}
+
+/* ---- perf pass (old values: dock blur .2rem+saturate1.4; sheetp blur 1.2rem+saturate1.5; #overlay blur 1rem) ---- */
+.dock{-webkit-backdrop-filter:blur(.15rem);backdrop-filter:blur(.15rem)}
+.sheetp{-webkit-backdrop-filter:blur(.5rem);backdrop-filter:blur(.5rem);will-change:transform}
+#overlay{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(3,8,34,.88)}
+#bg .layer{will-change:opacity;transition:opacity 1.6s linear}

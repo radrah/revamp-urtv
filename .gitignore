@@ -1,0 +1,13 @@
+.gradle-dist/
+.gradle/
+build/
+app/build/
+local.properties
+*.apk
+.DS_Store
+.idea/
+*.iml
+captures/
+my-wallpapers/
+app/src/main/assets/www/wallpapers/custom-*.jpg
+app/src/main/assets/www/wallpapers/custom.js

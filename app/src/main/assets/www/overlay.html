@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+@font-face{font-family:"Bagel Fat One";src:url(bagelfatone.woff2) format("woff2");font-weight:400}
+:root{--nv:#0a1340;--cy:#62c1dc}
+html{font-size:calc(100vw/96);background:transparent}
+*{box-sizing:border-box;margin:0;padding:0;font-weight:400}
+body{background:transparent;color:#fff;font-family:"Bagel Fat One",system-ui,sans-serif;width:100vw;height:100vh;overflow:hidden}
+button{font-family:inherit;color:#fff;background:none;border:none;outline:none;cursor:pointer}
+#scrim{position:fixed;inset:0;background:rgba(3,8,34,.12);opacity:0;transition:opacity .2s}
+.sheet{position:fixed;top:0;right:0;bottom:0;width:30rem;padding:2.2rem 1.8rem;background:linear-gradient(135deg,rgba(255,255,255,.07) 0%,rgba(255,255,255,.01) 45%,rgba(255,255,255,.05) 100%);-webkit-backdrop-filter:blur(.6rem) saturate(1.5) brightness(1.04);backdrop-filter:blur(.6rem) saturate(1.5) brightness(1.04);border-radius:2.4rem 0 0 2.4rem;box-shadow:inset .12rem 0 .15rem -.05rem rgba(255,255,255,.7),inset 0 .12rem .15rem -.05rem rgba(255,255,255,.5),-1rem 0 2.6rem rgba(0,0,15,.25);transform:translateX(100%);transition:transform .25s ease;overflow-y:auto}
+body.on #scrim{opacity:1}
+body.on .sheet{transform:translateX(0)}
+.ph{margin-bottom:1.6rem}
+#clock{font-size:3.4rem;line-height:1.05}
+#date{font-size:1.3rem;letter-spacing:.1rem;opacity:.9;margin-top:.3rem;text-transform:uppercase}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.ptile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;height:7.4rem;border-radius:1.1rem;border:.1rem solid rgba(255,255,255,.25);background:rgba(255,255,255,.05)}
+.ptile svg{width:2.6rem;height:2.6rem;fill:none;stroke:#fff;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.ptile span{font-size:1.05rem;letter-spacing:.06rem}
+.f:focus{background:#fff;color:var(--nv);border-color:#fff}
+.ptile:focus svg{stroke:var(--nv)}
+.ntitle{margin:1.6rem 0 .7rem .2rem;font-size:1rem;letter-spacing:.2rem;text-transform:uppercase;color:var(--cy)}
+#nList{display:flex;flex-direction:column;gap:.6rem}
+.nitem{text-align:left;padding:.8rem 1rem;border-radius:1rem;border:.1rem solid rgba(255,255,255,.2);background:rgba(255,255,255,.05)}
+.nitem .na{font-size:.8rem;letter-spacing:.06rem;opacity:.75;text-transform:uppercase}
+.nitem .nt{font-size:1.1rem;margin-top:.2rem}
+.nitem .nx{font-size:.9rem;opacity:.85;margin-top:.15rem}
+.ph,.ntitle,.nitem,.ptile span{text-shadow:0 .1rem .4rem rgba(0,0,20,.5)}
+.ptile,.nitem{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.28)}
+.nclear{align-self:flex-end;padding:.4rem 1.1rem;border-radius:99rem;border:.1rem solid rgba(255,255,255,.5);background:rgba(255,255,255,.08);font-size:.95rem;letter-spacing:.08rem;text-transform:uppercase}
+.nempty{padding:.8rem .4rem;font-size:1rem;opacity:.75}
+.sheet{background:linear-gradient(135deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.02) 45%,rgba(255,255,255,.06) 100%),rgba(8,16,56,.48);-webkit-backdrop-filter:blur(.5rem);backdrop-filter:blur(.5rem)}
+</style></head><body>
+<div id="scrim"></div>
+<div class="sheet">
+  <div class="ph"><div id="clock"></div><div id="date"></div></div>
+  <div class="pgrid" id="pGrid"></div>
+  <div class="ntitle">Notifications</div>
+  <div id="nList"></div>
+</div>
+<script src="overlay.js"></script>
+</body></html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Navy Home</title>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<div id="bg"><div class="layer a"></div><div class="layer b"></div><div class="tint"></div></div>
+
+<header>
+  <div class="who">
+    <div class="tw"><div id="clock" class="clock"></div><div id="wx" class="wx" hidden></div></div>
+    <div id="date" class="date"></div>
+  </div>
+  <nav>
+    <button class="f pill art" id="btnArt"><img src="icons/art.svg" alt="">Art</button>
+    <button class="f pill" id="btnApps"><img src="icons/apps.svg" alt="">Apps</button>
+    <button class="f pill" id="btnSettings"><img src="icons/settings.svg" alt="">Settings</button>
+  </nav>
+</header>
+
+<main>
+  <section class="dock">
+    <h2>Watch &amp; listen</h2>
+    <div class="row" id="rowApps"></div>
+    <h2>Inputs &amp; casting</h2>
+    <div class="row" id="rowInputs"></div>
+  </section>
+</main>
+
+<div id="overlay" hidden>
+  <div class="sheet">
+    <h2>All apps</h2>
+    <div class="grid" id="grid"></div>
+  </div>
+</div>
+<div id="panel" hidden>
+  <div class="sheetp">
+    <div class="ph"><div id="pClock"></div><div id="pDate"></div></div>
+    <div class="pgrid" id="pGrid"></div>
+    <div class="ntitle">Notifications</div>
+    <div id="nList"></div>
+  </div>
+</div>
+<div id="menu" hidden><div class="box"><div id="menuTitle"></div><div id="menuBtns"></div></div></div>
+<div id="saver"><div id="saverClock"></div><div id="saverDate"></div><div id="saverWx"></div></div>
+<div id="toast" hidden></div>
+<script src="wallpapers/custom.js"></script>
+<script src="app.js"></script>
+</body></html>
